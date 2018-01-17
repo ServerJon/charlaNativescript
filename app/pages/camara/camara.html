@@ -1,0 +1,12 @@
+<ActionBar title="">
+    <NavigationButton text="" android.systemIcon="ic_menu_back" (tap)="goBack()" [visibility]="isItemVisible ? 'collapsed' : 'visible'" ></NavigationButton>
+    <ActionItem (tap)="goBack()" ios.position="left" icon="res://back" [visibility]="isItemVisible ? 'visible' : 'collapsed'"
+        height="50" width="50"></ActionItem> 
+    <label text="Camara!!" ></label>
+</ActionBar>
+
+<GridLayout columns="*,*,*,*,*,*,*,*" rows="*,*,*,*,*,*,*,*">
+    <Button row="2" col="1" colSpan="3"  text="Cámara" (tap)="camara()"></Button>
+    <button row="2" col="4" colSpan="3" text="Galería" (tap)="galeria()"></button>
+    <Image [src]="picture" width="200" height="200" row="3" col="2" rowSpan="4" colSpan="4"></Image>
+</GridLayout>

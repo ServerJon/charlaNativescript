@@ -1,0 +1,14 @@
+<ActionBar title="">
+    <NavigationButton text="" android.systemIcon="ic_menu_back" (tap)="goBack()" [visibility]="isItemVisible ? 'collapsed' : 'visible'" ></NavigationButton>
+    <ActionItem (tap)="goBack()" ios.position="left" icon="res://back" [visibility]="isItemVisible ? 'visible' : 'collapsed'"
+        height="50" width="50"></ActionItem> 
+    <label text="Datos!!" ></label>
+</ActionBar>
+
+<FlexboxLayout flexDirection="column" class="page">
+    <FlexboxLayout class="m-15">
+        <Label class="h1" [text]="item.id + '. '"></Label>
+        <Label class="h1" [text]="item.name"></Label>
+    </FlexboxLayout>
+    <Label class="h3 p-l-10" [text]="item.role"></Label>
+</FlexboxLayout>

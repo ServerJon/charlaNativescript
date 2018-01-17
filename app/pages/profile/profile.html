@@ -1,0 +1,12 @@
+<ActionBar title="">
+    <NavigationButton text="" android.systemIcon="ic_menu_back" (tap)="goBack()" [visibility]="isItemVisible ? 'collapsed' : 'visible'" ></NavigationButton>
+    <ActionItem (tap)="goBack()" ios.position="left" icon="res://back" [visibility]="isItemVisible ? 'visible' : 'collapsed'"
+        height="50" width="50"></ActionItem> 
+    <label text="Mi Perfil!!" ></label>
+</ActionBar>
+
+<GridLayout columns="*,*,*,*,*,*,*,*" rows="*,*,*,*,*,*,*,*">
+    <label [text]="myProfile.login" row="2" col="1" colSpan="3" style="font-size:18sp;" ></label>
+    <Image [src]="myProfile.avatar_url" width="200" height="200" row="3" col="2" rowSpan="4" colSpan="4"></Image>
+    
+</GridLayout>

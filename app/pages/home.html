@@ -1,0 +1,13 @@
+<ActionBar title="">
+    <NavigationButton text="" icon="res://the_burger"  *ngIf="!isItemVisible"
+        ></NavigationButton>
+    <ActionItem ios.position="left" icon="res://the_burger" *ngIf="isItemVisible"
+        ></ActionItem>
+    <label text="Pagina de bienvenida!!" ></label>
+</ActionBar>
+
+<GridLayout columns="*,*,*,*,*,*,*,*" rows="*,*,*,*,*,*,*,*">
+    <Button row="2" col="1" colSpan="3"  text="Cámara" (tap)="camara()"></Button>
+    <button row="2" col="4" colSpan="3" text="Listado" (tap)="list()"></button>
+    <Button row="4" col="2" colSpan="4" text="Http" (tap)="profile()"></Button>
+</GridLayout>
