@@ -1,0 +1,71 @@
+//Codigo de Android
+
+if(isAndroid){
+	if(!Config.eventBack){
+		app.android.on(app.AndroidApplication.activityBackPressedEvent,(data: AndroidActivityBackPressedEventData) => {
+			console.log("Url del router: "+this.router.url);
+			if(this.router.url.indexOf("actionDetails") != -1){
+				data.cancel = true;
+				if(InvitationUrl.url != ""){
+					InvitationUrl.url = "";
+					setTimeout(()=>{
+						//Wait for the user can read the message.
+						this.zone.run(()=> 
+							this.nav.navigate(["/gameList"], {clearHistory: true}) 
+						);
+					}, 0);
+				}else{
+					setTimeout(()=>{
+						//Wait for the user can read the message.
+						this.zone.run(()=> 
+							this.nav.navigate(["/actionsList"])
+						);
+					}, 0);
+				}
+			}else if(this.router.url.indexOf("actionsList") != -1){
+				data.cancel = true;
+				setTimeout(()=>{
+					//Wait for the user can read the message.
+					this.zone.run(()=> 
+						this.nav.navigate(["/gameList"], {clearHistory: true}) 
+					);
+				}, 0);
+			}
+		});
+		Config.eventBack = true;
+	}
+}
+
+
+//Código de iOS
+if(!!app.ios){
+  class MyDelegate extends UIResponder implements UIApplicationDelegate {
+      public static ObjCProtocols = [UIApplicationDelegate];
+
+      applicationOpenURLSourceApplicationAnnotation(application: UIApplication, url: NSURL, sourceApplication: string, annotation: any): boolean {
+        console.log("CONSOLE LOG URL: "+url);
+        invitationUrl.sendTo(url.absoluteString);
+        return true;
+        //return FBSDKApplicationDelegate.sharedInstance().applicationOpenURLSourceApplicationAnnotation(application, url, sourceApplication, annotation);
+             
+     }
+
+      applicationDidBecomeActive(application: UIApplication): void{
+        console.log("applicationDidBecomeActive: "+application);
+        //FBSDKAppEvents.activateApp();
+      }
+
+    //   applicationDidFinishLaunchingWithOptions(application: UIApplication, launchOptions: NSDictionary): boolean {
+    //     return FBSDKApplicationDelegate.sharedInstance().applicationDidFinishLaunchingWithOptions(application, launchOptions);
+    //   }
+
+      applicationWillTerminate(application: UIApplication): void {
+        //Do something you want here
+      }
+
+      applicationDidEnterBackground(application: UIApplication): void {
+        //Do something you want here
+      }
+  }
+	app.ios.delegate = MyDelegate;
+}
