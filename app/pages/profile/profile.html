@@ -7,6 +7,20 @@
 
 <GridLayout columns="*,*,*,*,*,*,*,*" rows="*,*,*,*,*,*,*,*">
     <label [text]="myProfile.login" row="2" col="1" colSpan="3" style="font-size:18sp;" ></label>
+
+
+    <!-- 
+        Para cargar una imagen tenemos tres opciones:
+            - Con la URL completa de la imagen.
+                https://www.nativescript.org/images/default-source/landingpages/logo.png
+            - Importando la imagen desde una carpeta en la app.
+                ~/images/logo.png
+            - Desde la carpeta de App_Resource.
+                res://logo_login
+
+                Esta última solución sería la mas correcta, pues adapta la imágen a la pantalla dependiendo de la 
+            carpeta de Android (mdpi, hdpi, etc) o para iOS (@2x, @3x)
+    -->
     <Image [src]="myProfile.avatar_url" width="200" height="200" row="3" col="2" rowSpan="4" colSpan="4"></Image>
     
 </GridLayout>

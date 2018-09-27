@@ -1,4 +1,7 @@
-//Codigo de Android
+//Estos ejemplo de código son para acceder a la API nativa de cada plataforma a través de JavaScript, se usa para taréas más
+cooncretas y específicas.
+
+//Codigo de Android. Este ejemplo accedemos 
 
 if(isAndroid){
 	if(!Config.eventBack){
