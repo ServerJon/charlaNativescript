@@ -1,14 +1,11 @@
-import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+import { NgModule, NO_ERRORS_SCHEMA, NgModuleFactoryLoader } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from "./app.component";
 import { NativeScriptHttpModule } from "nativescript-angular/http";
+import { NSModuleFactoryLoader } from "nativescript-angular/router";
 
-import { ItemService } from "./item/item.service";
-import { ItemsComponent } from "./item/items.component";
-import { ItemDetailComponent } from "./item/item-detail.component";
 import { HomeComponent } from "./pages/home.component";
-import { CamaraComponent } from "./pages/camara/camara.component";
 import { ListComponent } from "./pages/list/list.component";
 import { ProfileComponent } from "./pages/profile/profile.component";
 import { ProfileService } from "./pages/profile/profile.service";
@@ -30,15 +27,12 @@ import { ProfileService } from "./pages/profile/profile.service";
     ],
     declarations: [
         AppComponent,
-        ItemsComponent,
-        ItemDetailComponent,
         HomeComponent,
-        CamaraComponent,
         ListComponent,
         ProfileComponent
     ],
     providers: [
-        ItemService,
+        { provide: NgModuleFactoryLoader, useClass: NSModuleFactoryLoader},
         ProfileService
     ],
     schemas: [
